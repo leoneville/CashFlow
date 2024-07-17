@@ -10,20 +10,22 @@ public class RegisterExpenseUseCase
     {
         Validate(request);
 
-        return new ResponseRegisteredExpenseJson();
+        return new ResponseRegisteredExpenseJson
+        {
+            Title = request.Title,
+        };
     }
 
-    private static void Validate(RequestRegisterExpenseJson request)
+    private void Validate(RequestRegisterExpenseJson request)
     {
         var validator = new RegisterExpenseValidator();
 
         var result = validator.Validate(request);
 
-        if (!result.IsValid)
+        if (result.IsValid == false)
         {
             var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
             throw new ErrorOnValidationException(errorMessages);
         }
-
     }
 }
