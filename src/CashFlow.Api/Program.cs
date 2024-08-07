@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
-builder.Services.AddInfrastructure(); // Extension Method
+builder.Services.AddInfrastructure(builder.Configuration); // Extension Method
 builder.Services.AddApplication();
 
 var app = builder.Build();
