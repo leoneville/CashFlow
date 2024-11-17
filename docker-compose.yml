@@ -1,0 +1,14 @@
+services:
+  db:
+    image: mysql:latest
+    environment:
+        MYSQL_USER: "admin"
+        MYSQL_PASSWORD: "@password123"
+        MYSQL_DATABASE: "cashflowdb"
+        MYSQL_ROOT_PASSWORD: "@password123"
+    ports:
+        - "3306:3306"
+    expose:
+        - "3306"
+    volumes:
+        - ./mysql-data:/var/lib/mysql
